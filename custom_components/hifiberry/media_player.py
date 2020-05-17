@@ -10,6 +10,7 @@ import socket
 import requests
 
 import voluptuous as vol
+import asyncio
 
 from homeassistant.components.media_player import PLATFORM_SCHEMA, MediaPlayerDevice
 from homeassistant.components.media_player.const import (
@@ -120,7 +121,7 @@ class HifiBerry(MediaPlayerDevice):
             return False
         return data
 
-    def update(self):
+    async def async_update(self):
         """Update state."""
         resp = self.get_hifiberry_msg("api/track/metadata", None)
         if resp is False:
