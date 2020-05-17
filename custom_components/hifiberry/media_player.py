@@ -132,8 +132,8 @@ class HifiBerry(MediaPlayerDevice):
         url = f"http://{self.host}:{self.port}/{method}"
         _LOGGER.debug("URL: %s params: %s", url, params)
         response = requests.post(url, json=params)
-        if response.status_code == 201:
-            data = response.json()
+        if response.status_code == 200 and response.content == "ok":
+            data = response.content
         else:
             _LOGGER.error(
                 "Query failed, response code: %s Full message: %s",
