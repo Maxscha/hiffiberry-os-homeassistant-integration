@@ -116,7 +116,7 @@ class HifiBerry(MediaPlayerDevice):
             _LOGGER.error(
                 "Query failed, response code: %s Full message: %s",
                 response.status_code,
-                response,
+                response.raw
             )
             return False
         return data
@@ -139,7 +139,7 @@ class HifiBerry(MediaPlayerDevice):
             _LOGGER.error(
                 "Query failed, response code: %s Full message: %s",
                 response.status_code,
-                response,
+                response.raw
             )
             return False
         return data
