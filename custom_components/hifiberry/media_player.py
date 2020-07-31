@@ -15,7 +15,7 @@ from aiohttp.hdrs import CONNECTION, KEEP_ALIVE
 import async_timeout
 import voluptuous as vol
 
-from homeassistant.components.media_player import PLATFORM_SCHEMA, MediaPlayerDevice
+from homeassistant.components.media_player import PLATFORM_SCHEMA, MediaPlayerEntity
 from homeassistant.components.media_player.const import (
     MEDIA_TYPE_MUSIC,
     SUPPORT_NEXT_TRACK,
@@ -36,7 +36,7 @@ from homeassistant.const import (
     STATE_PAUSED,
     STATE_PLAYING,
 )
-from homeassistant.helpers.aiohttp_client import async_get_clientsessio
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 import homeassistant.helpers.config_validation as cv
 
 _LOGGER = logging.getLogger(__name__)
@@ -96,7 +96,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     async_add_entities([entity])
 
 
-class HifiBerry(MediaPlayerDevice):
+class HifiBerry(MediaPlayerEntity):
     """HifiBerry Player Object."""
 
     def __init__(self, name, host, port, hass):
